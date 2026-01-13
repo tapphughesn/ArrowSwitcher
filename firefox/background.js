@@ -1,16 +1,15 @@
 async function changeTab(amount) {
-  await browser.tabs.query({ currentWindow: true }, (tabs) => {
-    for (let i = 0; i < tabs.length; i++) {
-      let tab = tabs[i];
-      if (tab.active) {
-        if (i + amount >= 0 && i + amount < tabs.length) {
-          let newTabId = tabs[i + amount].id;
-          browser.tabs.update(newTabId, { highlighted: true });
-          browser.tabs.update(tab.id, { highlighted: false });
-        }
-      }
-    }
+  const tabs = await browser.tabs.query({
+    currentWindow: true
   });
+
+  const activeIndex = tabs.findIndex(tab => tab.active);
+  if (activeIndex === -1) return;
+
+  const newIndex = activeIndex + amount;
+  if (newIndex < 0 || newIndex >= tabs.length) return;
+
+  await browser.tabs.update(tabs[newIndex].id, { active: true });
 }
 
 browser.commands.onCommand.addListener((command) => {

@@ -1,7 +1,7 @@
 # ArrowSwitcher
 
-A simple extension that switches the active tab using the following simple keybinds:
+A simple extension that switches the active tab using simple keybinds (below). Assumes you are using a vertical list of tabs.
 
-Ctrl + Left: One tab left
+Ctrl + Up: One tab up
 
-Ctrl + Right: One tab right
+Ctrl + Down: One tab down
