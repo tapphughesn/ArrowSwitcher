@@ -2,28 +2,38 @@
   "name": "Tab arrow switcher",
   "description": "Switch tab with Ctrl + Up/Down Arrow keys. Assumes vertical tabs.",
   "version": "1.0.1",
-  "manifest_version": 2,
+  "manifest_version": 3,
+
   "permissions": ["tabs"],
+
+  "data_collection_permissions": {
+    "collects_data": false
+  },
+
   "browser_specific_settings": {
     "gecko": {
-      "id": "tabarrowswitcher@tapphughesn"
+      "id": "tabarrowswitcher@tapphughesn",
+      "data_collection_permissions": {
+        "collects_data": false,
+        "required": ["none"]
+      }
     }
   },
+
   "commands": {
     "tab-left": {
-      "suggested_key": {
-        "default": "Ctrl+Up"
-      },
+      "suggested_key": { "default": "Ctrl+Up" },
       "description": "Switch to the upper tab"
     },
     "tab-right": {
-      "suggested_key": {
-        "default": "Ctrl+Down"
-      },
+      "suggested_key": { "default": "Ctrl+Down" },
       "description": "Switch to the lower tab"
     }
   },
+
   "background": {
-    "scripts": ["background.js"]
+    "scripts": [
+      "background.js"
+    ]
   }
 }
